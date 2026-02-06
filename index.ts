@@ -4,11 +4,15 @@ const NASA_API_KEY = process.env.NASA_API_KEY;
 const CLAUDE_KEY = process.env.CLAUDE_KEY;
 
 if (!NASA_API_KEY) {
-  throw new Error("NASA_API_KEY environment variable is not set");
+  throw new Error(
+    "NASA_API_KEY environment variable is not set. Go to https://api.nasa.gov/ to create a key.",
+  );
 }
 
 if (!CLAUDE_KEY) {
-  throw new Error("CLAUDE_KEY environment variable is not set");
+  throw new Error(
+    "CLAUDE_KEY environment variable is not set. Go to https://platform.claude.com/ to purchase a key.",
+  );
 }
 
 const anthropic = new Anthropic({
