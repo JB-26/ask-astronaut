@@ -159,6 +159,33 @@ const app = Bun.serve({
       }
     }
 
+    // serve the TypeScript file
+    // using Bun to transpile it
+    if (url.pathname === "/client.js") {
+      const result = await Bun.build({
+        entrypoints: ["./client.ts"],
+        target: "browser",
+      });
+
+      const [output] = result.outputs;
+
+      return new Response(output, {
+        headers: {
+          "Content-Type": "application/javascript",
+        },
+      });
+    }
+
+    // route for the compiled Tailwind CSS file
+    if (url.pathname === "/styles.css") {
+      console.log("Compiling Tailwind CSS...");
+      return new Response(Bun.file("./src/output.css"), {
+        headers: {
+          "Content-Type": "text/css",
+        },
+      });
+    }
+
     // 404
     return new Response("Not found", { status: 404 });
   },

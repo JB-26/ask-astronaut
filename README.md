@@ -13,3 +13,11 @@ bun run start
 ```
 
 This project was created using `bun init` in bun v1.3.8. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+
+
+### Tailwind CSS
+Run the following to run Tailwind:
+
+```bash
+npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+```
