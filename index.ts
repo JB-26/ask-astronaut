@@ -21,7 +21,7 @@ const anthropic = new Anthropic({
 
 // routes for HTTP server
 const app = Bun.serve({
-  port: 3000,
+  port: Number(process.env.PORT) || 3000,
   async fetch(request) {
     const url = new URL(request.url);
 
