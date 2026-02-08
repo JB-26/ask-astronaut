@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/styles.css" rel="stylesheet" />
+        <title>Ask Astronaut - about</title>
+    </head>
+    <body class="bg-gray-950 text-white min-h-screen">
+        <div class="flex flex-col items-center min-h-screen">
+            <header
+                class="w-full bg-gray-900 border-b border-orange-500 py-6 text-center"
+            >
+                <h1 class="text-4xl font-bold tracking-wide text-orange-400">
+                    Ask Astronaut
+                </h1>
+                <p class="text-sm text-gray-400 mt-1">
+                    Powered by NASA APOD & Claude
+                </p>
+                <p class="text-sm text-gray-400 mt-1">
+                    <a class="text-sm mt-1 font-bold text-orange-400 hover:text-orange-300 hover:underline" href="/" rel="noopener noreferrer">Home</a> | <a class="text-sm mt-1 font-bold text-orange-400 hover:text-orange-300 hover:underline" href="/about" rel="noopener noreferrer"">About</a>
+                </p>
+            </header>
+
+            <main
+                class="flex flex-col items-center w-full max-w-2xl px-4 py-8 gap-6"
+            >
+                <div
+                    class="flex flex-col items-center w-full rounded-lg overflow-hidden bg-gray-900 border border-gray-800 p-4"
+                    id="image-container"
+                >
+                    <h1 class="text-4xl font-bold tracking-wide text-orange-400">About this project</h1>
+                    <p class="text-gray-400">This project was created to explore the possibilities of using AI with Claude to answer questions about space and to demonstrate my skills and passion for web development. <br>
+                        I was curious about using the vision aspect of Claude and AI in general in creating interactive experiences for users. It's been an interesting experiment, and I've learned a lot about web development and AI along the way. <br>
+                            If you want to see more of my projects or want to drop me a line, check out my <a class="text-sm mt-1 font-bold text-orange-400 hover:text-orange-300 hover:underline" href="https://www.joshblewitt.dev/" target="_blank" rel="noopener noreferrer">website.</a></p>
+                    <h2 class="text-3xl font-bold tracking-wide text-orange-400">Technologies Used</h2>
+                    <p class="text-gray-400">This is a TypeScript web application that combines NASA's Astronomy Picture of the Day API with Claude's vision capabilities.</p>
+                    <ul class="list-disc text-gray-400 mb-3">
+                        <li>Runtime: Bun (server + bundler)</li>
+                        <li>Language: TypeScript (both server and client)</li>
+                        <li>AI: Anthropic SDK (claude-haiku-4-5-20251001)</li>
+                        <li>Styling: Tailwind CSS (dark theme with orange accents)</li>
+                        <li>APIs: NASA APOD API</li>
+                    </ul>
+                    <table class="w-full border-collapse bg-gray-800 rounded-lg overflow-hidden">
+                      <thead>
+                        <tr class="bg-gray-700">
+                          <th class="px-6 py-3 text-left font-semibold text-white border-b border-gray-600">Route</th>
+                          <th class="px-6 py-3 text-left font-semibold text-white border-b border-gray-600">Method</th>
+                          <th class="px-6 py-3 text-left font-semibold text-white border-b border-gray-600">Purpose</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="border-b border-gray-700">
+                          <td class="px-6 py-4 font-mono">/</td>
+                          <td class="px-6 py-4 font-semibold">GET</td>
+                          <td class="px-6 py-4">Serves index.html</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                          <td class="px-6 py-4 font-mono">/about</td>
+                          <td class="px-6 py-4 font-semibold">GET</td>
+                          <td class="px-6 py-4">Serves about.html</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                          <td class="px-6 py-4 font-mono">/api/apod</td>
+                          <td class="px-6 py-4 font-semibold">GET</td>
+                          <td class="px-6 py-4">Fetches random NASA APOD image</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                          <td class="px-6 py-4 font-mono">/api/ask</td>
+                          <td class="px-6 py-4 font-semibold">POST</td>
+                          <td class="px-6 py-4">Sends image + question to Claude, streams response</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                          <td class="px-6 py-4 font-mono">/client.js</td>
+                          <td class="px-6 py-4 font-semibold">GET</td>
+                          <td class="px-6 py-4">Transpiles & serves client.ts</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                          <td class="px-6 py-4 font-mono">/styles.css</td>
+                          <td class="px-6 py-4 font-semibold">GET</td>
+                          <td class="px-6 py-4">Serves compiled Tailwind CSS</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <footer
+                class="mt-auto w-full py-4 text-center text-sm text-gray-500 border-t border-gray-800"
+            >
+                <p>
+                    This project was created by
+                    <a
+                        href="https://www.joshblewitt.dev/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        class="font-bold text-orange-400 hover:text-orange-300 hover:underline"
+                        >Joshua Blewitt</a
+                    >
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

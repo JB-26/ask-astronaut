@@ -1,10 +1,7 @@
-async function loadApod() {
-  // TODO: Fetch from /api/apod
-  // TODO: Parse the JSON
-  // TODO: Get the image URL from the response
-  // TODO: Update the DOM to show the image
-  // TODO: Return the image URL
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
+async function loadApod() {
   interface ApodData {
     url: string;
     title: string;
@@ -46,10 +43,12 @@ async function loadApod() {
     // title element
     const h2 = document.createElement("h2");
     h2.textContent = title;
+    h2.className = "text-2xl text-orange-400 font-bold";
 
     // explanation element
     const p = document.createElement("p");
     p.textContent = explanation;
+    p.className = "text-gray-300";
 
     // append elements
     element.appendChild(img);
@@ -123,6 +122,8 @@ async function handleAsk(event: Event, imageUrl: string) {
     const reader = claudeResponse.body.getReader();
     const decoder = new TextDecoder();
 
+    let fullResponse = "";
+
     // loop through the chunks of the response
     while (true) {
       const { done, value } = await reader.read();
@@ -130,8 +131,19 @@ async function handleAsk(event: Event, imageUrl: string) {
         break;
       }
       const text = decoder.decode(value);
-      responseText.textContent += text;
+      fullResponse += text;
+
+      // remember, not to append the full response!
+      responseText.textContent = fullResponse;
     }
+
+    // once streaming is complete, clean up the text
+    // convert Claude's markdown reponse to HTML
+    // ensure we get a string, not a promise
+    const rawHtml = await marked(fullResponse);
+    const cleanHtml = DOMPurify.sanitize(rawHtml);
+
+    responseText.innerHTML = cleanHtml;
   } catch (error) {
     console.error("Failed to ask Claude", error);
     const errorElement = document.createElement("p");

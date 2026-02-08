@@ -34,6 +34,15 @@ const app = Bun.serve({
       });
     }
 
+    // about page
+    if (url.pathname === "/about") {
+      return new Response(Bun.file("about.html"), {
+        headers: {
+          "Content-Type": "text/html",
+        },
+      });
+    }
+
     // NASA API
     if (url.pathname === "/api/apod") {
       try {
